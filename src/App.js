@@ -1,15 +1,15 @@
-import { Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import User from './components/User';
 
 function App() {
   return (
     <div>
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path="/user" element={<User />} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </div>
   );
 }

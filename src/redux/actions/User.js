@@ -9,7 +9,7 @@ export const getUsers = () => async (dispatch) => {
   dispatch({
     type: actionTypes.GET_USER,
     payload: users.map((user) => ({
-      name: user.username,
+      name: user.name,
       id: user.id,
     })),
   });
