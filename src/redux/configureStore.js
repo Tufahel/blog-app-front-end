@@ -3,9 +3,16 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import UsersReducer from './reducers/User';
+import {
+  UsersReducer, SignupReducer,
+  SigninReducer,
+  SignoutReducer,
+} from './reducers/User';
 
 const rootReducer = combineReducers({
+  SignupReducer,
+  SigninReducer,
+  SignoutReducer,
   UsersReducer,
 });
 const store = createStore(rootReducer,
