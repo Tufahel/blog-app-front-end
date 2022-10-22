@@ -33,10 +33,44 @@ export const postSigninData = async (user) => {
   return res;
 };
 
-export const authToken = () => {
+const authToken = () => {
   const token = localStorage.getItem('token');
   if (token) {
     return token;
   }
   return {};
+};
+
+export const createNewPost = async (data, id) => {
+  const newPost = {
+    user_id: id,
+    title: data.title,
+    text: data.text,
+  };
+
+  console.log('newpost: ', newPost);
+
+  const response = await axios.post(`${URL}/api/posts`, newPost, {
+    headers: {
+      Authorization: `Bearer ${authToken()}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const fetchPosts = async () => {
+  const res = await fetch(`${URL}/api/posts`)
+    .then((response) => response.json());
+  return res;
+};
+
+export const deletePost = async (id) => {
+  const res = await axios.delete(`${URL}/api/posts/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken()}`,
+    },
+  });
+  return res.data;
 };

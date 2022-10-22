@@ -1,0 +1,75 @@
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createPost } from '../../redux/actions/Post';
+
+const CreatePost = () => {
+  const posts = useSelector((state) => state.PostReducer);
+  const [post, setPost] = useState({
+    title: '',
+    text: '',
+  });
+
+  const handleChange = (e) => {
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const dispatch = useDispatch(posts);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createPost(post, navigate('/'), e));
+  };
+  return (
+    <>
+      <div className="">
+        <section className="">
+          <p className="">Add Bike </p>
+          <form
+            onSubmit={handleSubmit}
+            className=""
+          >
+            <input
+              className=""
+              placeholder="Title"
+              type="text"
+              name="title"
+              minLength="1"
+              maxLength="100"
+              onChange={handleChange}
+              value={post.title}
+              required
+            />
+            <br />
+            <textarea
+              className=""
+              placeholder="Text"
+              type="text"
+              name="text"
+              value={post.text}
+              minLength="1"
+              maxLength="100"
+              onChange={handleChange}
+              rows={5}
+              cols={21}
+              required
+            />
+            <br />
+            <button
+              className=""
+              type="submit"
+            >
+              Post Now
+            </button>
+          </form>
+        </section>
+      </div>
+    </>
+  );
+};
+
+export default CreatePost;

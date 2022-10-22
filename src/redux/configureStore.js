@@ -9,11 +9,14 @@ import {
   SignoutReducer,
 } from './reducers/User';
 
+import PostReducer from './reducers/Post';
+
 const rootReducer = combineReducers({
   SignupReducer,
   SigninReducer,
   SignoutReducer,
   UsersReducer,
+  PostReducer,
 });
 const store = createStore(rootReducer,
   compose(applyMiddleware(thunk, logger)));
