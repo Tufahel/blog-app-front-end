@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createPost } from '../../redux/actions/Post';
 
 const CreatePost = () => {
-  const posts = useSelector((state) => state.PostReducer);
   const [post, setPost] = useState({
     title: '',
     text: '',
@@ -17,12 +16,12 @@ const CreatePost = () => {
     });
   };
 
-  const dispatch = useDispatch(posts);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(post, navigate('/'), e));
+    dispatch(createPost(post, navigate('/posts'), e));
   };
   return (
     <>
