@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
-import { signIn } from '../../redux/actions/User';
+import { signIn, signOut } from '../../redux/actions/User';
 
 const Login = () => {
+  const user = localStorage.getItem('user');
   const { errorSignin = null, loadingSignin = false } = useSelector((state) => state.SigninReducer);
   const [userSignin, setSignin] = useState({
     email: '',
@@ -19,6 +20,10 @@ const Login = () => {
     console.log('component: ', userSignin);
   };
 
+  function handleSignout() {
+    dispatch(signOut(navigate('/')));
+  }
+
   const handleOnChange = (event) => {
     setSignin((prevState) => ({
       ...prevState,
@@ -26,6 +31,23 @@ const Login = () => {
     }));
   };
   return (
+    <>
+      {
+      user && (
+        <>
+          <h3> You are logged in</h3>
+          <button
+            type="button"
+            onClick={() => handleSignout()}
+            className=""
+          >
+            Logout
+          </button>
+        </>
+      )
+    }
+      {
+    (user === null) && (
     <>
       <div className="main-login">
         <h1 className="">Login</h1>
@@ -62,6 +84,9 @@ const Login = () => {
           <input className="" type="submit" value="Login" />
         </form>
       </div>
+    </>
+    )
+          }
     </>
   );
 };
