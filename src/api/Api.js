@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const URL = 'http://localhost:3000';
+const userId = localStorage.getItem('userid');
 
 export const fetchUserData = async () => {
   const res = await fetch(`${URL}/api/users`)
@@ -50,7 +51,7 @@ export const createNewPost = async (data, id) => {
 
   console.log('newpost: ', newPost);
 
-  const response = await axios.post(`${URL}/api/posts`, newPost, {
+  const response = await axios.post(`${URL}/api/users/${userId}/posts`, newPost, {
     headers: {
       Authorization: `Bearer ${authToken()}`,
     },
@@ -60,13 +61,13 @@ export const createNewPost = async (data, id) => {
 };
 
 export const fetchPosts = async () => {
-  const res = await fetch(`${URL}/api/posts`)
+  const res = await fetch(`${URL}/api/users/${userId}/posts`)
     .then((response) => response.json());
   return res;
 };
 
 export const deletePost = async (id) => {
-  const res = await axios.delete(`${URL}/api/posts/${id}`, {
+  const res = await axios.delete(`${URL}/api/users/${userId}/posts/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken()}`,

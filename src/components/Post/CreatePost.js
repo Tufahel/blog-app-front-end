@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { createPost } from '../../redux/actions/Post';
 
 const CreatePost = () => {
+  const user = localStorage.getItem('user');
   const [post, setPost] = useState({
     title: '',
     text: '',
@@ -27,7 +28,7 @@ const CreatePost = () => {
     <>
       <div className="">
         <section className="">
-          <p className="">Add Bike </p>
+          <p className="">Add Post</p>
           <form
             onSubmit={handleSubmit}
             className=""
@@ -65,7 +66,19 @@ const CreatePost = () => {
               Post Now
             </button>
           </form>
+
         </section>
+        {
+        user && (
+          <button
+            className=""
+            type="button"
+            onClick={() => navigate('/posts')}
+          >
+            See Posts
+          </button>
+        )
+      }
       </div>
     </>
   );
