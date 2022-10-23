@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getPostDetails } from '../../redux/actions/Post';
+import Comments from '../Comment/Comments';
 
 const PostDetails = () => {
   const postId = localStorage.getItem('postid');
@@ -25,6 +26,7 @@ const PostDetails = () => {
         {post.text}
         .
       </p>
+      <Comments />
       {
         user && (
           <button

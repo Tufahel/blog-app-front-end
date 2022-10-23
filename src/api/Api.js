@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const URL = 'http://localhost:3000';
 const userId = localStorage.getItem('userid');
+const postId = localStorage.getItem('postid');
 
 export const fetchUserData = async () => {
   const res = await fetch(`${URL}/api/users`)
@@ -66,7 +67,8 @@ export const fetchPosts = async () => {
   return res;
 };
 
-export const fetchPostDetails = async (postId) => {
+export const fetchPostDetails = async () => {
+  console.log('api: ', postId);
   const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
     .then((response) => response.json());
   return res;
@@ -82,14 +84,14 @@ export const deletePost = async (id) => {
   return res.data;
 };
 
-export const createNewComment = async (data, postId) => {
+export const createNewComment = async (data) => {
   const newComment = {
     text: data.text,
   };
 
   console.log('newComment: ', newComment);
 
-  const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}`, newComment, {
+  const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}/comments`, newComment, {
     headers: {
       Authorization: `Bearer ${authToken()}`,
     },
@@ -99,7 +101,7 @@ export const createNewComment = async (data, postId) => {
 };
 
 export const fetchComments = async (postId) => {
-  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
+  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}/comments`)
     .then((response) => response.json());
   return res;
 };

@@ -10,8 +10,10 @@ import {
 } from './reducers/User';
 
 import PostReducer from './reducers/Post';
+import CommentReducer from './reducers/Comment';
 
 const rootReducer = combineReducers({
+  CommentReducer,
   SignupReducer,
   SigninReducer,
   SignoutReducer,

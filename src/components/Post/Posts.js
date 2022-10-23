@@ -22,6 +22,7 @@ const Posts = () => {
   const handlePostId = (id) => {
     localStorage.setItem('postid', id);
     navigate('/postdetails');
+    window.location.reload(true);
   };
   return (
     <>
