@@ -66,6 +66,12 @@ export const fetchPosts = async () => {
   return res;
 };
 
+export const fetchPostDetails = async (postId) => {
+  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
+    .then((response) => response.json());
+  return res;
+};
+
 export const deletePost = async (id) => {
   const res = await axios.delete(`${URL}/api/users/${userId}/posts/${id}`, {
     headers: {
@@ -74,4 +80,26 @@ export const deletePost = async (id) => {
     },
   });
   return res.data;
+};
+
+export const createNewComment = async (data, postId) => {
+  const newComment = {
+    text: data.text,
+  };
+
+  console.log('newComment: ', newComment);
+
+  const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}`, newComment, {
+    headers: {
+      Authorization: `Bearer ${authToken()}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const fetchComments = async (postId) => {
+  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
+    .then((response) => response.json());
+  return res;
 };

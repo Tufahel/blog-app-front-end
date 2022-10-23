@@ -38,7 +38,7 @@ export const getPosts = () => async (dispatch) => {
     });
 };
 
-export const getPostDetails = (postId, location) => async (dispatch) => {
+export const getPostDetails = (postId) => async (dispatch) => {
   fetchPostDetails(postId)
     .then((post) => {
       dispatch({
@@ -46,7 +46,6 @@ export const getPostDetails = (postId, location) => async (dispatch) => {
         payload: post,
       });
       localStorage.setItem('single post', post);
-      location('/postdetails');
     })
     .catch((error) => {
       dispatch({
