@@ -1,5 +1,5 @@
 import {
-  fetchPosts, createNewPost, deletePost,
+  fetchPosts, createNewPost, deletePost, fetchPostDetails,
 } from '../../api/Api';
 import { signIn } from './User';
 
@@ -10,6 +10,8 @@ export const actionTypes = {
   POST_DELETE_FAILURE: 'POST_DELETE_FAILURE',
   POSTS_GET_SUCCESS: 'POSTS_GET_SUCCESS',
   POSTS_GET_FAILURE: 'POSTS_GET_FAILURE',
+  POST_GET_SUCCESS: 'POST_GET_SUCCESS',
+  POST_GET_FAILURE: 'POST_GET_FAILURE',
 };
 
 export const getPosts = () => async (dispatch) => {
@@ -31,6 +33,24 @@ export const getPosts = () => async (dispatch) => {
     .catch((error) => {
       dispatch({
         type: actionTypes.POSTS_GET_FAILURE,
+        payload: error,
+      });
+    });
+};
+
+export const getPostDetails = (postId, location) => async (dispatch) => {
+  fetchPostDetails(postId)
+    .then((post) => {
+      dispatch({
+        type: actionTypes.POST_GET_SUCCESS,
+        payload: post,
+      });
+      localStorage.setItem('single post', post);
+      location('/postdetails');
+    })
+    .catch((error) => {
+      dispatch({
+        type: actionTypes.POST_GET_FAILURE,
         payload: error,
       });
     });

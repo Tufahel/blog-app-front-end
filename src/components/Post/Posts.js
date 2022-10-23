@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getPosts, destroyPost } from '../../redux/actions/Post';
+import { getPosts, destroyPost, getPostDetails } from '../../redux/actions/Post';
 
 const Posts = () => {
   const user = localStorage.getItem('user');
@@ -12,6 +12,9 @@ const Posts = () => {
   useEffect(() => {
     dispatch(getPosts());
   }, []);
+  const handlePostDetails = (id) => {
+    dispatch(getPostDetails(id, navigate));
+  };
   const handleDelete = (id) => {
     dispatch(destroyPost(id));
     window.location.reload(true);
@@ -31,8 +34,8 @@ const Posts = () => {
           user && (
           <button className="" type="button" onClick={() => handleDelete(post.post_id)}>DELETE</button>
           )
-
-      }
+          }
+          <button className="" type="button" onClick={() => handlePostDetails(post.post_id)}>See Full Post</button>
         </p>
       ))}
       {
