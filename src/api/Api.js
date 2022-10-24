@@ -105,3 +105,13 @@ export const fetchComments = async (postId) => {
     .then((response) => response.json());
   return res;
 };
+
+export const deleteComment = async (id) => {
+  const res = await axios.delete(`${URL}/api/users/${userId}/posts/${postId}/comments/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authToken()}`,
+    },
+  });
+  return res.data;
+};

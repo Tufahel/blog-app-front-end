@@ -1,5 +1,5 @@
 import {
-  fetchComments, createNewComment,
+  fetchComments, createNewComment, deleteComment,
 } from '../../api/Api';
 import { signIn } from './User';
 
@@ -21,6 +21,7 @@ export const getComments = () => async (dispatch) => {
           user_id: comment.author_id,
           text: comment.text,
           post_id: comment.post_id,
+          comment_id: comment.id,
         })),
       });
       localStorage.setItem('comments', JSON.stringify(comments));
@@ -53,20 +54,20 @@ export const createComment = (comment, location) => (dispatch) => {
     });
 };
 
-//   export const destroyComment = (id) => (dispatch) => {
-//     deleteComment(id)
-//       .then(() => {
-//         dispatch({
-//           type: actionTypes.COMMENT_DELETE_SUCCESS,
-//           payload: id,
-//         });
-//       //   toast.success('post deleted successfully');
-//       })
-//       .catch((error) => {
-//         dispatch({
-//           type: actionTypes.COMMENT_DELETE_FAILURE,
-//           payload: error,
-//         });
-//       //   toast.error('Unable to delete post');
-//       });
-//   };
+export const destroyComment = (id) => (dispatch) => {
+  deleteComment(id)
+    .then(() => {
+      dispatch({
+        type: actionTypes.COMMENT_DELETE_SUCCESS,
+        payload: id,
+      });
+      //   toast.success('post deleted successfully');
+    })
+    .catch((error) => {
+      dispatch({
+        type: actionTypes.COMMENT_DELETE_FAILURE,
+        payload: error,
+      });
+      //   toast.error('Unable to delete post');
+    });
+};

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getPostDetails } from '../../redux/actions/Post';
+import { destroyPost, getPostDetails } from '../../redux/actions/Post';
 import Comments from '../Comment/Comments';
 
 const PostDetails = () => {
@@ -15,9 +15,15 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(getPostDetails(postId));
   }, []);
+
+  const handleDelete = (id) => {
+    dispatch(destroyPost(id));
+    navigate('/posts');
+    window.location.reload(true);
+  };
   return (
     <>
-      <p key={post.postId}>
+      <p key={post.id}>
         Title: &nbsp;
         {post.title}
         ,
@@ -25,6 +31,16 @@ const PostDetails = () => {
         Your post text is &nbsp;
         {post.text}
         .
+        {' '}
+        Your post id &nbsp;
+        {post.id}
+        .
+        {' '}
+        {
+          user && (
+          <button className="" type="button" onClick={() => handleDelete(post.id)}>DELETE</button>
+          )
+        }
       </p>
       <Comments />
       {

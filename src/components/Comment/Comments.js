@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from '../../redux/actions/Comment';
+import { destroyComment, getComments } from '../../redux/actions/Comment';
 
 const Comments = () => {
+  const user = localStorage.getItem('user');
   const postId = parseInt(localStorage.getItem('postid'), 10);
   console.log(postId);
   const comments = useSelector((state) => state.CommentReducer);
@@ -14,6 +15,11 @@ const Comments = () => {
   useEffect(() => {
     dispatch(getComments());
   }, []);
+
+  const handleDelete = (id) => {
+    dispatch(destroyComment(id));
+    window.location.reload(true);
+  };
   return (
     <>
       <h3>Comments: </h3>
@@ -26,6 +32,13 @@ const Comments = () => {
           {comment.user_id}
           Your post id is &nbsp;
           {comment.post_id}
+          .
+          {' '}
+          {
+          user && (
+          <button className="" type="button" onClick={() => handleDelete(comment.comment_id)}>DELETE</button>
+          )
+          }
         </p>
       ))}
     </>
