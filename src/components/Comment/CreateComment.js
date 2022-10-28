@@ -21,7 +21,7 @@ const CreateComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createComment(comment, navigate('/posts'), e));
+    dispatch(createComment(comment, navigate('/postdetails'), e));
   };
   return (
     <>
