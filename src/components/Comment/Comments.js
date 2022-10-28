@@ -22,7 +22,10 @@ const Comments = () => {
   };
   return (
     <>
-      <h3>Comments: </h3>
+      <h3>
+        Comments: &nbsp;
+        {filtered.length}
+      </h3>
       {filtered?.map((comment) => (
         <p key={comment.post_id}>
           Your comment text is &nbsp;
