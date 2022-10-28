@@ -9,11 +9,19 @@ const Posts = () => {
   console.log(posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getPosts());
   }, []);
+
   const handleDelete = (id) => {
     dispatch(destroyPost(id));
+    window.location.reload(true);
+  };
+
+  const handlePostId = (id) => {
+    localStorage.setItem('postid', id);
+    navigate('/postdetails');
     window.location.reload(true);
   };
   return (
@@ -31,8 +39,8 @@ const Posts = () => {
           user && (
           <button className="" type="button" onClick={() => handleDelete(post.post_id)}>DELETE</button>
           )
-
-      }
+          }
+          <button className="" type="button" onClick={() => handlePostId(post.post_id)}>See Full Post</button>
         </p>
       ))}
       {

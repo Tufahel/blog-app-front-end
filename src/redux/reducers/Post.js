@@ -2,7 +2,7 @@ import { actionTypes } from '../actions/Post';
 
 const initialState = {
   posts: [],
-  post: [],
+  post: {},
   loading: false,
   error: null,
 };
@@ -20,6 +20,20 @@ const PostReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: [],
+        loading: false,
+        error: null,
+      };
+    case actionTypes.POST_GET_SUCCESS:
+      return {
+        ...state,
+        post: { ...state.post, ...action.payload },
+        loading: false,
+        error: null,
+      };
+    case actionTypes.POST_GET_FAILURE:
+      return {
+        ...state,
+        post: {},
         loading: false,
         error: null,
       };
