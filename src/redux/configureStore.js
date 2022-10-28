@@ -11,6 +11,7 @@ import {
 
 import PostReducer from './reducers/Post';
 import CommentReducer from './reducers/Comment';
+import LikeReducer from './reducers/Like';
 
 const rootReducer = combineReducers({
   CommentReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   SignoutReducer,
   UsersReducer,
   PostReducer,
+  LikeReducer,
 });
 const store = createStore(rootReducer,
   compose(applyMiddleware(thunk, logger)));

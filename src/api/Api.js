@@ -115,3 +115,19 @@ export const deleteComment = async (id) => {
   });
   return res.data;
 };
+
+export const createNewLike = async () => {
+  const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}/likes`, {
+    headers: {
+      Authorization: `Bearer ${authToken()}`,
+    },
+  });
+
+  return response.data;
+};
+
+export const fetchLikes = async (postId) => {
+  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}/likes`)
+    .then((response) => response.json());
+  return res;
+};
