@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { createLike } from '../../redux/actions/Like';
 import { destroyPost, getPostDetails } from '../../redux/actions/Post';
 import Comments from '../Comment/Comments';
 
@@ -19,8 +20,13 @@ const PostDetails = () => {
   const handleDelete = (id) => {
     dispatch(destroyPost(id));
     navigate('/posts');
+  };
+
+  const handleLike = () => {
+    dispatch(createLike());
     window.location.reload(true);
   };
+
   return (
     <>
       <p key={post.id}>
@@ -39,6 +45,11 @@ const PostDetails = () => {
         {
           user && (
           <button className="" type="button" onClick={() => handleDelete(post.id)}>DELETE</button>
+          )
+        }
+        {
+          user && (
+          <button className="" type="button" onClick={() => handleLike()}>Like</button>
           )
         }
       </p>
