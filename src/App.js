@@ -10,6 +10,7 @@ import Signup from './components/Signup/Signup';
 import User from './components/User';
 
 function App() {
+  const postId = localStorage.getItem('postid');
   return (
     <div>
       <BrowserRouter>
@@ -19,8 +20,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/createpost" element={<CreatePost />} />
           <Route path="/posts" element={<Posts />} />
-          <Route path="/postdetails" element={<PostDetails />} />
-          <Route path="/createcomment" element={<CreateComment />} />
+          <Route path={`/post/${postId}`} element={<PostDetails />} />
+          <Route path={`/post/${postId}/createcomment`} element={<CreateComment />} />
           <Route path="/comments" element={<Comments />} />
         </Routes>
       </BrowserRouter>

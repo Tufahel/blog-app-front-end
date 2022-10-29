@@ -59,7 +59,7 @@ const PostDetails = () => {
           <button
             className=""
             type="button"
-            onClick={() => navigate('/createcomment')}
+            onClick={() => navigate(`/post/${postId}/createcomment`)}
           >
             Add Comment
           </button>
