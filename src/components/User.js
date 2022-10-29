@@ -11,7 +11,7 @@ export default function User() {
   return (
     <>
       {users.value?.map((user) => (
-        <p key={user.id}>
+        <p key={user.id} className="text-3xl font-bold underline">
           Welcome: &nbsp;
           {user.name}
           ,
