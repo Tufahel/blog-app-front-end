@@ -27,21 +27,21 @@ const CreateComment = () => {
   };
   return (
     <>
-      <div className="">
-        <section className="">
-          <p className="">Add Comment</p>
+      <div className="flex flex-col m-2">
+        <section className="m-10">
+          <p className="font-bold text-lg text-center">Add Comment</p>
           <form
             onSubmit={handleSubmit}
-            className=""
+            className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
           >
             <textarea
-              className=""
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               placeholder="Text"
               type="text"
               name="text"
               value={comment.text}
               minLength="1"
-              maxLength="100"
+              maxLength="500"
               onChange={handleChange}
               rows={5}
               cols={21}
@@ -49,7 +49,7 @@ const CreateComment = () => {
             />
             <br />
             <button
-              className=""
+              className="text-center bg-green-500 hover:bg-green-700 text-white font-bold p-2 rounded"
               type="submit"
             >
               Comment Now
@@ -60,7 +60,7 @@ const CreateComment = () => {
         {
         user && (
           <button
-            className=""
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded mx-20"
             type="button"
             onClick={() => navigate('/posts')}
           >
