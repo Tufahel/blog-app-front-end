@@ -29,10 +29,10 @@ const Signup = () => {
 
   return (
     <>
-      <div className="mainSign">
-        <h1 className="">Sign Up</h1>
+      <div className="m-10">
+        <h1 className="font-bold text-lg text-center">Sign Up</h1>
         <form
-          className="signup-form"
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 space-y-2"
           onSubmit={handleLogin}
         >
           { errorSignup && (
@@ -42,7 +42,7 @@ const Signup = () => {
           )}
           <input
             onChange={handleOnChange}
-            className=""
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="text"
             name="name"
             placeholder="Name"
@@ -51,7 +51,7 @@ const Signup = () => {
           />
           <input
             onChange={handleOnChange}
-            className=""
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="email"
             name="email"
             placeholder="Email"
@@ -60,7 +60,7 @@ const Signup = () => {
           />
           <input
             onChange={handleOnChange}
-            className="w-full sm:w-3/4 border-1 border-main  focus:border-main"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             name="password"
             placeholder="Password"
@@ -70,7 +70,7 @@ const Signup = () => {
           />
           <input
             onChange={handleOnChange}
-            className="w-full sm:w-3/4 border-1 border-main  focus:border-main"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             type="password"
             name="confirm_password"
             placeholder="Confirm Password"
@@ -96,18 +96,20 @@ const Signup = () => {
           </div>
           )}
           <small className="">{}</small>
-          <p className="">
-            Already a member?
-            <NavLink className="" to="/login">
-              Login
-            </NavLink>
-          </p>
-          <button
-            className=""
-            type="submit"
-          >
-            Signup
-          </button>
+          <div className="flex justify-between items-center my-4">
+            <p>
+              Already a member?
+              <NavLink className="px-2 inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" to="/login">
+                Login
+              </NavLink>
+            </p>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              Signup
+            </button>
+          </div>
         </form>
       </div>
     </>
