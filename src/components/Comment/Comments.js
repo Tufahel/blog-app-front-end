@@ -30,32 +30,33 @@ const Comments = () => {
   };
   return (
     <>
-      <h3>
-        Likes: &nbsp;
-        {filterLike.length}
-      </h3>
-      <h3>
-        Comments: &nbsp;
-        {filtered.length}
-      </h3>
-      {filtered?.map((comment) => (
-        <p key={comment.post_id}>
-          Your comment text is &nbsp;
-          {comment.text}
-          .
-          Your author id is &nbsp;
-          {comment.user_id}
-          Your post id is &nbsp;
-          {comment.post_id}
-          .
-          {' '}
-          {
+      <div className="border space-y-2">
+        {' '}
+        <div className="flex justify-center space-x-2 border">
+          <h3>
+            Likes: &nbsp;
+            {filterLike.length}
+          </h3>
+          <h3>
+            Comments: &nbsp;
+            {filtered.length}
+          </h3>
+        </div>
+        {filtered?.map((comment) => (
+          <div className="flex justify-center space-x-2" key={comment.post_id}>
+            <p>
+              Comment: &nbsp;
+              {comment.text}
+            </p>
+            {
           user && (
-          <button className="" type="button" onClick={() => handleDelete(comment.comment_id)}>DELETE</button>
+          <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(comment.comment_id)}>Delete</button>
           )
           }
-        </p>
-      ))}
+          </div>
+        ))}
+      </div>
+
     </>
   );
 };
