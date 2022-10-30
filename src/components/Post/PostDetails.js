@@ -19,7 +19,7 @@ const PostDetails = () => {
 
   const handleDelete = (id) => {
     dispatch(destroyPost(id));
-    navigate('/posts');
+    navigate('/');
   };
 
   const handleLike = () => {

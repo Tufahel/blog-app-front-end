@@ -43,7 +43,7 @@ const Comments = () => {
           </h3>
         </div>
         {filtered?.map((comment) => (
-          <div className="flex justify-center space-x-2" key={comment.post_id}>
+          <div className="flex justify-center space-x-2 items-center" key={comment.post_id}>
             <p>
               Comment: &nbsp;
               {comment.text}

@@ -65,7 +65,7 @@ export const createPost = (post, location) => (dispatch) => {
         payload: post,
       });
       //   toast.success('post created successfully');
-      location('/posts');
+      location('/');
     })
     .catch((error) => {
       dispatch({
