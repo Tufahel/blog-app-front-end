@@ -19,19 +19,16 @@ export const postSignupData = async (user) => {
       confirm_password: user.confirm_password,
     },
   });
-  console.log(res.data);
   return res.data;
 };
 
 export const postSigninData = async (user) => {
-  console.log('api: ', user);
   const res = await axios.post(`${URL}/users/sign_in`, {
     user: {
       email: user.email,
       password: user.password,
     },
   });
-  console.log(res);
   return res;
 };
 
@@ -51,8 +48,6 @@ export const createNewPost = async (data, id) => {
     image: data.image,
   };
 
-  console.log('newpost: ', newPost);
-
   const response = await axios.post(`${URL}/api/users/${userId}/posts`, newPost, {
     headers: {
       Authorization: `Bearer ${authToken()}`,
@@ -69,7 +64,6 @@ export const fetchPosts = async () => {
 };
 
 export const fetchPostDetails = async () => {
-  console.log('api: ', postId);
   const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
     .then((response) => response.json());
   return res;
@@ -89,8 +83,6 @@ export const createNewComment = async (data) => {
   const newComment = {
     text: data.text,
   };
-
-  console.log('newComment: ', newComment);
 
   const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}/comments`, newComment, {
     headers: {

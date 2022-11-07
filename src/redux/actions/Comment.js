@@ -43,7 +43,6 @@ export const createComment = (comment, location) => (dispatch) => {
         type: actionTypes.COMMENT_CREATE_SUCCESS,
         payload: post,
       });
-      //   toast.success('post created successfully');
       location('/posts');
     })
     .catch((error) => {
@@ -61,13 +60,11 @@ export const destroyComment = (id) => (dispatch) => {
         type: actionTypes.COMMENT_DELETE_SUCCESS,
         payload: id,
       });
-      //   toast.success('post deleted successfully');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.COMMENT_DELETE_FAILURE,
         payload: error,
       });
-      //   toast.error('Unable to delete post');
     });
 };

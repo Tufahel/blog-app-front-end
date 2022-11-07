@@ -7,10 +7,8 @@ import Comments from '../Comment/Comments';
 
 const PostDetails = () => {
   const postId = localStorage.getItem('postid');
-  console.log(postId);
   const user = localStorage.getItem('user');
   const { post } = useSelector((state) => state.PostReducer);
-  console.log('postdetails: ', post);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {

@@ -7,16 +7,11 @@ const Comments = () => {
   const user = localStorage.getItem('user');
   const userId = parseInt(localStorage.getItem('userid'), 10);
   const postId = parseInt(localStorage.getItem('postid'), 10);
-  console.log(postId);
   const comments = useSelector((state) => state.CommentReducer);
-  console.log(comments.comments);
   const filtered = comments.comments.filter((comment) => comment.post_id === postId);
-  console.log(filtered);
   const dispatch = useDispatch();
   const likes = useSelector((state) => state.LikeReducer);
-  console.log('like compc: ', likes.likes);
   const filterLike = likes.likes.filter((lk) => lk.post_id === postId && lk.user_id === userId);
-  console.log('filter Like', filterLike);
   useEffect(() => {
     dispatch(getLikes());
   }, []);

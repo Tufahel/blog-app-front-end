@@ -7,7 +7,6 @@ const Posts = () => {
   const postId = localStorage.getItem('postid');
   const user = localStorage.getItem('user');
   const posts = useSelector((state) => state.PostReducer);
-  console.log(posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

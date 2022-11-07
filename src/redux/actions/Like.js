@@ -37,7 +37,6 @@ export const createLike = () => (dispatch) => {
         type: actionTypes.LIKE_CREATE_SUCCESS,
         payload: like,
       });
-      //   toast.success('post created successfully')
     })
     .catch((error) => {
       dispatch({

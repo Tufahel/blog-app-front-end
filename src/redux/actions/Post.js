@@ -46,7 +46,6 @@ export const getPostDetails = (postId) => async (dispatch) => {
         type: actionTypes.POST_GET_SUCCESS,
         payload: post,
       });
-      localStorage.setItem('single post', post);
     })
     .catch((error) => {
       dispatch({
@@ -65,7 +64,6 @@ export const createPost = (post, location) => (dispatch) => {
         type: actionTypes.POST_CREATE_SUCCESS,
         payload: post,
       });
-      //   toast.success('post created successfully');
       location('/');
     })
     .catch((error) => {
@@ -83,13 +81,11 @@ export const destroyPost = (id) => (dispatch) => {
         type: actionTypes.POST_DELETE_SUCCESS,
         payload: id,
       });
-    //   toast.success('post deleted successfully');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.POST_DELETE_FAILURE,
         payload: error,
       });
-    //   toast.error('Unable to delete post');
     });
 };

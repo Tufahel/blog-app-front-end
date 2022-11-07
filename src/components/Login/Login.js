@@ -17,7 +17,6 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(signIn(userSignin, navigate));
-    console.log('component: ', userSignin);
   };
 
   const handleOnChange = (event) => {
