@@ -49,7 +49,7 @@ const CreateComment = () => {
             />
             <br />
             <button
-              className="text-center bg-green-500 hover:bg-green-700 text-white font-bold p-2 rounded"
+              className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 rounded"
               type="submit"
             >
               Comment Now
