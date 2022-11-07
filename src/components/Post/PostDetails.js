@@ -7,8 +7,10 @@ import Comments from '../Comment/Comments';
 
 const PostDetails = () => {
   const postId = localStorage.getItem('postid');
+  const userId = parseInt(localStorage.getItem('userid'), 10);
   const user = localStorage.getItem('user');
   const { post } = useSelector((state) => state.PostReducer);
+  // console.log('posttt: ', post);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,7 +35,7 @@ const PostDetails = () => {
         <p>{post.text}</p>
         <div className="flex space-x-2 m-2">
           {
-          user && (
+          (userId === post.author_id) && (
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(post.id)}>Delete</button>
           )
         }
@@ -45,7 +47,7 @@ const PostDetails = () => {
         </div>
       </div>
       <div className="flex flex-col justify-center space-y-2">
-        <Comments />
+        <Comments id={post.author_id} />
         {
         user && (
           <button

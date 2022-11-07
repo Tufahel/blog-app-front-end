@@ -8,6 +8,7 @@ import CreatePost from './components/Post/CreatePost';
 import PostDetails from './components/Post/PostDetails';
 import Posts from './components/Post/Posts';
 import Signup from './components/Signup/Signup';
+import User from './components/User';
 
 function App() {
   const postId = localStorage.getItem('postid');
@@ -17,6 +18,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Posts />} />
+          <Route path="/user" element={<User />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/createpost" element={<CreatePost />} />
