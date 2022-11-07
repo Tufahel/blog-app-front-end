@@ -31,11 +31,11 @@ const Posts = () => {
         <div className="flex flex-wrap justify-center m-8">
           {posts.posts?.map((post) => (
             <div className="flex flex-col items-center p-2" key={post.post_id}>
-              <img className="rounded w-24" src="https://img.freepik.com/premium-vector/motorcycle-logo-black-background-modern-racing-superbike-silhouette_304830-257.jpg?w=740" alt="img" />
+              <img className="rounded object-cover h-24" src={post.image} alt="img" />
               {' '}
               <h4 className="font-bold text-lg">{post.title}</h4>
               {' '}
-              <p className="w-60 truncate">{post.text}</p>
+              <p className="w-60 truncate text-center">{post.text}</p>
               <div className="flex flex-row space-x-1">
                 {
           user && (
@@ -50,7 +50,7 @@ const Posts = () => {
         {
         user && (
           <button
-            className="text-center bg-green-500 hover:bg-green-700 text-white font-bold p-2 mx-20 rounded items-center"
+            className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 mx-20 rounded items-center"
             type="button"
             onClick={() => navigate('/createpost')}
           >

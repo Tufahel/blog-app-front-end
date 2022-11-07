@@ -30,7 +30,7 @@ const PostDetails = () => {
   return (
     <>
       <div key={post.id} className="flex flex-col justify-center items-center m-2">
-        <img className="rounded w-60" src="https://img.freepik.com/premium-vector/motorcycle-logo-black-background-modern-racing-superbike-silhouette_304830-257.jpg?w=740" alt="img" />
+        <img className="rounded w-60" src={post.image} alt="img" />
         <h4 className="font-bold text-lg">{post.title}</h4>
         <p>{post.text}</p>
         <div className="flex space-x-2 m-2">
@@ -41,7 +41,7 @@ const PostDetails = () => {
         }
           {
           user && (
-          <button className="bg-blue-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleLike()}>Like</button>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleLike()}>Like</button>
           )
         }
         </div>
@@ -51,7 +51,7 @@ const PostDetails = () => {
         {
         user && (
           <button
-            className="text-center bg-green-500 hover:bg-green-700 text-white font-bold p-2 mx-20 rounded items-center"
+            className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 mx-20 rounded items-center"
             type="button"
             onClick={() => navigate(`/post/${postId}/createcomment`)}
           >

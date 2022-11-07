@@ -23,6 +23,7 @@ export const getPosts = () => async (dispatch) => {
           user_id: post.author_id,
           title: post.title,
           text: post.text,
+          image: post.image,
           like_counts: post.like_counter,
           comment_counts: post.comment_counter,
           post_id: post.id,

@@ -48,6 +48,7 @@ export const createNewPost = async (data, id) => {
     user_id: id,
     title: data.title,
     text: data.text,
+    image: data.image,
   };
 
   console.log('newpost: ', newPost);
