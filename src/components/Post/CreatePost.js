@@ -85,7 +85,7 @@ const CreatePost = () => {
         {
         user && (
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded mx-20"
+            className="bg-teal-500 hover:bg-teal-700 text-white font-bold p-1 rounded mx-20"
             type="button"
             onClick={() => navigate('/')}
           >
