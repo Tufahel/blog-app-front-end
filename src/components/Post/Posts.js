@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { getPosts, destroyPost } from '../../redux/actions/Post';
+import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 
 const Posts = () => {
   const postId = localStorage.getItem('postid');
@@ -32,16 +33,21 @@ const Posts = () => {
             <div className="flex flex-col items-center p-2" key={post.post_id}>
               <img className="rounded object-cover h-24" src={post.image} alt="img" />
               {' '}
-              <h4 className="font-bold text-lg">{post.title}</h4>
+              <h4 className="font-bold text-lg text-green-700">
+                {post.title}
+              </h4>
               {' '}
-              <p className="w-60 truncate text-center">{post.text}</p>
+              <div className="flex">
+                <p className="w-60 truncate text-center">{post.text}</p>
+                <NavLink><button className="text-blue-500" type="button" onClick={() => handlePostId(post.post_id)}>See more</button></NavLink>
+              </div>
+              <LikeCommentCount id={post.post_id} />
               <div className="flex flex-row space-x-1">
                 {
           user && (
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(post.post_id)}>Delete Post</button>
           )
           }
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded" type="button" onClick={() => handlePostId(post.post_id)}>See Full Post</button>
               </div>
             </div>
           ))}

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { destroyComment, getComments } from '../../redux/actions/Comment';
-import { getLikes } from '../../redux/actions/Like';
 import User from '../User';
+import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 
 const Comments = (props) => {
   const {
@@ -16,11 +16,6 @@ const Comments = (props) => {
   const comments = useSelector((state) => state.CommentReducer);
   const filtered = comments.comments.filter((comment) => comment.post_id === postId);
   const dispatch = useDispatch();
-  const likes = useSelector((state) => state.LikeReducer);
-  const filterLike = likes.likes.filter((lk) => lk.post_id === postId);
-  useEffect(() => {
-    dispatch(getLikes());
-  }, []);
   useEffect(() => {
     dispatch(getComments());
   }, []);
@@ -33,28 +28,20 @@ const Comments = (props) => {
     <>
       <div className="border space-y-2">
         {' '}
-        <div className="flex justify-center space-x-2 border">
-          <h3>
-            Likes: &nbsp;
-            {filterLike.length}
-          </h3>
-          <h3>
-            Comments: &nbsp;
-            {filtered.length}
-          </h3>
-        </div>
+        <div className="border"><LikeCommentCount id={postId} /></div>
         {filtered?.map((comment) => (
-          <div className="flex justify-center space-x-2 items-center" key={comment.post_id}>
+          <div className="m-2" key={comment.post_id}>
             <p>
               <User id={comment.user_id} />
               {' : '}
               {comment.text}
-            </p>
-            {
+              {' '}
+              {
           (userId === id && user) && (
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(comment.comment_id)}>Delete</button>
+          <button className="text-red-500 hover:text-red-700 font-bold" type="button" onClick={() => handleDelete(comment.comment_id)}>Delete</button>
           )
           }
+            </p>
           </div>
         ))}
       </div>

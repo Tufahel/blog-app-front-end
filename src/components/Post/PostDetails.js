@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { createLike } from '../../redux/actions/Like';
 import { destroyPost, getPostDetails } from '../../redux/actions/Post';
 import Comments from '../Comment/Comments';
+import User from '../User';
 
 const PostDetails = () => {
   const postId = localStorage.getItem('postid');
@@ -31,7 +32,12 @@ const PostDetails = () => {
     <>
       <div key={post.id} className="flex flex-col justify-center items-center m-2">
         <img className="rounded w-60" src={post.image} alt="img" />
-        <h4 className="font-bold text-lg">{post.title}</h4>
+        <div>
+          Posted by:
+          {' '}
+          <User id={post.author_id} />
+        </div>
+        <h4 className="font-bold text-lg text-green-700">{post.title}</h4>
         <p>{post.text}</p>
         <div className="flex space-x-2 m-2">
           {
