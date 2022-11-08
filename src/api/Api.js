@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3000';
+const URL = 'https://limitless-gorge-05434.herokuapp.com';
 const userId = localStorage.getItem('userid');
 const postId = localStorage.getItem('postid');
 
