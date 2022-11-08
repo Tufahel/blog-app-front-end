@@ -9,7 +9,6 @@ const Comments = (props) => {
   const {
     id,
   } = props;
-  // console.log('post id: ', id);
   const user = localStorage.getItem('user');
   const userId = parseInt(localStorage.getItem('userid'), 10);
   const postId = parseInt(localStorage.getItem('postid'), 10);

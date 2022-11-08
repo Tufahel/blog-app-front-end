@@ -7,12 +7,9 @@ const User = (props) => {
   const {
     id,
   } = props;
-  console.log(id);
   const dispatch = useDispatch();
   const users = useSelector((state) => state.UsersReducer);
-  console.log('all: ', users.value);
   const filtered = users.value?.filter((user) => user.id === id);
-  console.log('user: ', filtered);
   useEffect(() => {
     dispatch(getUsers());
   }, []);

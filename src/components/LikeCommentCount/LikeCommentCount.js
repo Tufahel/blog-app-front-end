@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLikes } from '../../redux/actions/Like';
+import { getComments } from '../../redux/actions/Comment';
 
 const LikeCommentCount = (props) => {
   const {
@@ -14,6 +15,9 @@ const LikeCommentCount = (props) => {
   const filterLike = likes.likes.filter((lk) => lk.post_id === id);
   useEffect(() => {
     dispatch(getLikes());
+  }, []);
+  useEffect(() => {
+    dispatch(getComments());
   }, []);
   return (
     <div className="flex justify-center space-x-2">
