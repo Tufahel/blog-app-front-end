@@ -1,7 +1,6 @@
 import {
   fetchPosts, createNewPost, deletePost, fetchPostDetails,
 } from '../../api/Api';
-import { signIn } from './User';
 
 export const actionTypes = {
   POST_CREATE_SUCCESS: 'POST_CREATE_SUCCESS',
@@ -57,9 +56,7 @@ export const getPostDetails = (id) => async (dispatch) => {
 };
 
 export const createPost = (post, location) => (dispatch) => {
-  const user = signIn();
-  const userId = localStorage.getItem('userid', user);
-  createNewPost(post, userId)
+  createNewPost(post)
     .then((post) => {
       dispatch({
         type: actionTypes.POST_CREATE_SUCCESS,
@@ -75,13 +72,14 @@ export const createPost = (post, location) => (dispatch) => {
     });
 };
 
-export const destroyPost = (id) => (dispatch) => {
-  deletePost(id)
+export const destroyPost = (postId) => (dispatch) => {
+  deletePost(postId)
     .then(() => {
       dispatch({
         type: actionTypes.POST_DELETE_SUCCESS,
-        payload: id,
+        payload: postId,
       });
+      window.location.reload();
     })
     .catch((error) => {
       dispatch({

@@ -1,7 +1,6 @@
 import {
   fetchComments, createNewComment, deleteComment,
 } from '../../api/Api';
-import { signIn } from './User';
 
 export const actionTypes = {
   COMMENT_CREATE_SUCCESS: 'COMMENT_CREATE_SUCCESS',
@@ -34,16 +33,14 @@ export const getComments = () => async (dispatch) => {
     });
 };
 
-export const createComment = (comment, location) => (dispatch) => {
-  const user = signIn();
-  const userId = localStorage.getItem('userid', user);
-  createNewComment(comment, userId)
+export const createComment = (comment, postId, location) => (dispatch) => {
+  createNewComment(comment, postId)
     .then((post) => {
       dispatch({
         type: actionTypes.COMMENT_CREATE_SUCCESS,
         payload: post,
       });
-      location('/posts');
+      location('/post');
     })
     .catch((error) => {
       dispatch({
@@ -53,13 +50,15 @@ export const createComment = (comment, location) => (dispatch) => {
     });
 };
 
-export const destroyComment = (id) => (dispatch) => {
-  deleteComment(id)
+export const destroyComment = (postId, id, location) => (dispatch) => {
+  deleteComment(postId, id)
     .then(() => {
       dispatch({
         type: actionTypes.COMMENT_DELETE_SUCCESS,
         payload: id,
       });
+      window.location.reload();
+      location('/post');
     })
     .catch((error) => {
       dispatch({

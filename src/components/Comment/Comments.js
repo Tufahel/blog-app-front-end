@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { destroyComment, getComments } from '../../redux/actions/Comment';
+import { getComments } from '../../redux/actions/Comment';
 import User from '../User';
 import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
+import DeleteComment from './DeleteComment';
 
 const Comments = (props) => {
   const {
@@ -18,11 +19,6 @@ const Comments = (props) => {
   useEffect(() => {
     dispatch(getComments());
   }, []);
-
-  const handleDelete = (id) => {
-    dispatch(destroyComment(id));
-    window.location.reload(true);
-  };
   return (
     <>
       <div className="border space-y-2">
@@ -37,7 +33,7 @@ const Comments = (props) => {
               {' '}
               {
           (userId === id && user) && (
-          <button className="text-red-500 hover:text-red-700 font-bold" type="button" onClick={() => handleDelete(comment.comment_id)}>Delete</button>
+          <DeleteComment id={comment.comment_id} />
           )
           }
             </p>

@@ -30,8 +30,8 @@ export const getLikes = () => async (dispatch) => {
     });
 };
 
-export const createLike = () => (dispatch) => {
-  createNewLike()
+export const createLike = (postId) => (dispatch) => {
+  createNewLike(postId)
     .then((like) => {
       dispatch({
         type: actionTypes.LIKE_CREATE_SUCCESS,

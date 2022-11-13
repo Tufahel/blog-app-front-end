@@ -18,14 +18,14 @@ const PostDetails = () => {
     dispatch(getPostDetails(postId));
   }, []);
 
-  const handleDelete = (id) => {
-    dispatch(destroyPost(id));
+  const handleDelete = () => {
+    dispatch(destroyPost(postId));
     navigate('/');
   };
 
-  const handleLike = () => {
-    dispatch(createLike());
-    window.location.reload(true);
+  const handleLike = (e) => {
+    e.preventDefault();
+    dispatch(createLike(postId));
   };
 
   return (
@@ -41,13 +41,18 @@ const PostDetails = () => {
         <p>{post.text}</p>
         <div className="flex space-x-2 m-2">
           {
-          (userId === post.author_id) && (
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(post.id)}>Delete</button>
+          user && (
+            <form
+              onSubmit={handleLike}
+            >
+              {' '}
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded" type="submit" onClick={() => handleLike()}>Like</button>
+            </form>
           )
         }
           {
-          user && (
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleLike()}>Like</button>
+          (userId === post.author_id) && (
+            <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete()}>Delete</button>
           )
         }
         </div>
@@ -59,7 +64,7 @@ const PostDetails = () => {
           <button
             className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 mx-20 rounded items-center"
             type="button"
-            onClick={() => navigate(`/post/${postId}/createcomment`)}
+            onClick={() => navigate('/post/createcomment')}
           >
             Add Comment
           </button>

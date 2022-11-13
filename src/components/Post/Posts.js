@@ -6,6 +6,7 @@ import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 
 const Posts = () => {
   const user = localStorage.getItem('user');
+  const userId = parseInt(localStorage.getItem('userid'), 10);
   const posts = useSelector((state) => state.PostReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,7 +17,6 @@ const Posts = () => {
 
   const handleDelete = (id) => {
     dispatch(destroyPost(id));
-    window.location.reload(true);
   };
 
   const setPostId = (id) => {
@@ -42,7 +42,7 @@ const Posts = () => {
               <LikeCommentCount id={post.post_id} />
               <div className="flex flex-row space-x-1">
                 {
-          user && (
+          (userId === post.user_id) && (
           <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete(post.post_id)}>Delete Post</button>
           )
           }

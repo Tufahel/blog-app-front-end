@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { createComment } from '../../redux/actions/Comment';
 
 const CreateComment = () => {
-  const postId = localStorage.getItem('postid');
   const user = localStorage.getItem('user');
+  const postId = parseInt(localStorage.getItem('postid'), 10);
   const [comment, setComment] = useState({
     text: '',
   });
@@ -22,8 +22,7 @@ const CreateComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createComment(comment, navigate(`/post/${postId}`), e));
-    window.location.reload(true);
+    dispatch(createComment(comment, postId, navigate));
   };
   return (
     <>
