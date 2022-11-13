@@ -5,7 +5,6 @@ import { getPosts, destroyPost } from '../../redux/actions/Post';
 import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 
 const Posts = () => {
-  const postId = localStorage.getItem('postid');
   const user = localStorage.getItem('user');
   const posts = useSelector((state) => state.PostReducer);
   const dispatch = useDispatch();
@@ -20,10 +19,9 @@ const Posts = () => {
     window.location.reload(true);
   };
 
-  const handlePostId = (id) => {
+  const setPostId = (id) => {
     localStorage.setItem('postid', id);
-    navigate(`/post/${postId}`);
-    window.location.reload(true);
+    // navigate(`/post/${postId}`);
   };
   return (
     <>
@@ -39,7 +37,7 @@ const Posts = () => {
               {' '}
               <div className="flex">
                 <p className="w-60 truncate text-center">{post.text}</p>
-                <NavLink><button className="text-blue-500" type="button" onClick={() => handlePostId(post.post_id)}>See more</button></NavLink>
+                <NavLink to="/post"><button className="text-blue-500" type="button" onClick={() => setPostId(post.post_id)}>See more</button></NavLink>
               </div>
               <LikeCommentCount id={post.post_id} />
               <div className="flex flex-row space-x-1">

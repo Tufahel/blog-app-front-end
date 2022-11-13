@@ -39,13 +39,14 @@ export const getPosts = () => async (dispatch) => {
     });
 };
 
-export const getPostDetails = (postId) => async (dispatch) => {
-  fetchPostDetails(postId)
+export const getPostDetails = (id) => async (dispatch) => {
+  fetchPostDetails(id)
     .then((post) => {
       dispatch({
         type: actionTypes.POST_GET_SUCCESS,
         payload: post,
       });
+      console.log('action post: ', post);
     })
     .catch((error) => {
       dispatch({

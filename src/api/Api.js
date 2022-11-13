@@ -63,8 +63,8 @@ export const fetchPosts = async () => {
   return res;
 };
 
-export const fetchPostDetails = async () => {
-  const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
+export const fetchPostDetails = async (id) => {
+  const res = await fetch(`${URL}/api/users/${userId}/posts/${id}`)
     .then((response) => response.json());
   return res;
 };
