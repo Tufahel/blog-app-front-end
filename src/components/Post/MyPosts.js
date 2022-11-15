@@ -4,10 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { getPosts, destroyPost } from '../../redux/actions/Post';
 import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 
-const Posts = () => {
+const MyPosts = () => {
   const user = localStorage.getItem('user');
   const userId = parseInt(localStorage.getItem('userid'), 10);
   const posts = useSelector((state) => state.PostReducer);
+  const myPosts = posts.posts.filter((post) => post.user_id === userId);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ const Posts = () => {
     <>
       <div className="flex flex-col m-2">
         <div className="flex flex-wrap justify-center m-8">
-          {posts.posts?.map((post) => (
+          {myPosts?.map((post) => (
             <div className="flex flex-col items-center p-2" key={post.post_id}>
               <img className="rounded object-cover h-24" src={post.image} alt="img" />
               {' '}
@@ -67,4 +68,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default MyPosts;

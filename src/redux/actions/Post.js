@@ -79,7 +79,6 @@ export const destroyPost = (postId) => (dispatch) => {
         type: actionTypes.POST_DELETE_SUCCESS,
         payload: postId,
       });
-      window.location.reload();
     })
     .catch((error) => {
       dispatch({
