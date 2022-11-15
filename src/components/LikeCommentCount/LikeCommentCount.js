@@ -20,12 +20,12 @@ const LikeCommentCount = (props) => {
     dispatch(getComments());
   }, []);
   return (
-    <div className="flex justify-center space-x-2">
+    <div className="flex">
       <h3>
         Likes: &nbsp;
         {filterLike.length}
       </h3>
-      <h3>
+      <h3 className="ml-2">
         Comments: &nbsp;
         {filtered.length}
       </h3>

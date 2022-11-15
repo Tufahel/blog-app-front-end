@@ -11,25 +11,25 @@ const Navigation = () => {
     dispatch(signOut(navigate('/')));
   }
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-      <div className="flex items-center flex-shrink-0 text-white mr-6">
+    <nav className="flex items-center justify-between flex-wrap p-4">
+      <div className="flex items-center flex-shrink-0 text-black mr-6">
         <span className="font-semibold text-xl tracking-tight">Tufahel&apos;s Blog</span>
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">
-          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/">Posts</NavLink>
+          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-green-500 mr-4" to="/">Posts</NavLink>
           {
       user && (
         <>
-          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white  mr-4" to="/myposts">My Posts</NavLink>
+          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-green-500  mr-4" to="/myposts">My Posts</NavLink>
         </>
       )
     }
-          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/contacts">Contacts</NavLink>
+          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-green-500 mr-4" to="/contacts">Contacts</NavLink>
           {
       user && (
         <>
-          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4" to="/">
+          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-green-500 mr-4" to="/">
             {JSON.parse(user)}
             {' '}
             is active now
@@ -44,9 +44,16 @@ const Navigation = () => {
           <button
             type="button"
             onClick={() => handleSignout()}
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-red-500 border-red-500 hover:border-red-500 hover:text-white hover:bg-red-700 mt-4 lg:mt-0 mr-2"
           >
             Logout
+          </button>
+          <button
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-green-500 border-green-500 hover:border-green-700 hover:text-white hover:bg-green-700 mt-4 lg:mt-0"
+            type="button"
+            onClick={() => navigate('/createpost')}
+          >
+            Add Post
           </button>
         </>
       )
@@ -54,7 +61,7 @@ const Navigation = () => {
         {
       user == null && (
         <>
-          <NavLink className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0" to="/login">Login</NavLink>
+          <NavLink className="inline-block text-sm px-4 py-2 leading-none border rounded text-green-500 border-green-500 hover:border-green-700 hover:text-white hover:bg-green-700 mt-4 lg:mt-0" to="/login">Login</NavLink>
         </>
       )
     }

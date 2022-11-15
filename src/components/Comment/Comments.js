@@ -23,11 +23,11 @@ const Comments = (props) => {
     <>
       <div className="border space-y-2">
         {' '}
-        <div className="border"><LikeCommentCount id={postId} /></div>
+        <div className="flex justify-center border"><LikeCommentCount id={postId} /></div>
         {filtered?.map((comment) => (
           <div className="m-2" key={comment.post_id}>
             <p>
-              <User id={comment.user_id} />
+              <div className="inline text-black font-medium"><User id={comment.user_id} /></div>
               {' : '}
               {comment.text}
               {' '}

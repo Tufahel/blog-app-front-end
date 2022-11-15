@@ -18,7 +18,7 @@ const DeleteComment = (props) => {
   };
   return (
 
-    <NavLink><button className="text-red-500 hover:text-red-700 font-bold" type="button" onClick={() => handleDelete(id)}>Delete</button></NavLink>
+    <NavLink><button className="inline-block text-sm px-4 py-2 leading-none border rounded text-red-500 border-red-500 hover:border-red-500 hover:text-white hover:bg-red-700 mt-4 lg:mt-0 mx-2" type="button" onClick={() => handleDelete(id)}>Delete</button></NavLink>
 
   );
 };

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Comments from './components/Comment/Comments';
 import CreateComment from './components/Comment/CreateComment';
+import Contact from './components/Contact/Contact';
 import Login from './components/Login/Login';
 import Navigation from './components/Navigation/Navigation';
 import CreatePost from './components/Post/CreatePost';
@@ -18,6 +19,7 @@ function App() {
         <Navigation />
         <Routes>
           <Route path="/" element={<Posts />} />
+          <Route path="/contacts" element={<Contact />} />
           <Route path="/myposts" element={<MyPosts />} />
           <Route path="/user" element={<User />} />
           <Route path="/signup" element={<Signup />} />

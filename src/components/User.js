@@ -16,7 +16,7 @@ const User = (props) => {
   return (
     <>
       {filtered?.map((usr) => (
-        <div className="inline font-bold" key={id}>
+        <div className="inline" key={id}>
           {usr.name.toUpperCase()}
         </div>
       ))}

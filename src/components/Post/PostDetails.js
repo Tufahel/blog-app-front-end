@@ -35,9 +35,9 @@ const PostDetails = () => {
         <div>
           Posted by:
           {' '}
-          <User id={post.author_id} />
+          <div className="inline text-red-500 font-medium"><User id={post.author_id} /></div>
         </div>
-        <h4 className="font-bold text-lg text-green-700">{post.title}</h4>
+        <h4 className="font-bold text-lg">{post.title}</h4>
         <p>{post.text}</p>
         <div className="flex space-x-2 m-2">
           {
@@ -46,23 +46,19 @@ const PostDetails = () => {
               onSubmit={handleLike}
             >
               {' '}
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded" type="submit" onClick={() => handleLike()}>Like</button>
+              <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-500 border-blue-500 hover:border-blue-500 hover:text-white hover:bg-blue-700 mt-4 lg:mt-0 mr-2" type="submit" onClick={() => handleLike()}>Like</button>
             </form>
           )
         }
           {
           (userId === post.author_id) && (
-            <button className="bg-red-500 hover:bg-red-700 text-white font-bold p-1 rounded" type="button" onClick={() => handleDelete()}>Delete</button>
+            <button className="inline-block text-sm px-4 py-2 leading-none border rounded text-red-500 border-red-500 hover:border-red-500 hover:text-white hover:bg-red-700 mt-4 lg:mt-0 mr-2" type="button" onClick={() => handleDelete()}>Delete</button>
           )
         }
-        </div>
-      </div>
-      <div className="flex flex-col justify-center space-y-2">
-        <Comments id={post.author_id} />
-        {
+          {
         user && (
           <button
-            className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 mx-20 rounded items-center"
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-green-500 border-green-500 hover:border-green-700 hover:text-white hover:bg-green-700 mt-4 lg:mt-0"
             type="button"
             onClick={() => navigate('/post/createcomment')}
           >
@@ -70,6 +66,10 @@ const PostDetails = () => {
           </button>
         )
       }
+        </div>
+      </div>
+      <div className="flex flex-col justify-center space-y-2">
+        <Comments id={post.author_id} />
       </div>
     </>
   );

@@ -26,6 +26,7 @@ export const getPosts = () => async (dispatch) => {
           like_counts: post.like_counter,
           comment_counts: post.comment_counter,
           post_id: post.id,
+          created_at: post.created_at,
         })),
       });
       localStorage.setItem('posts', JSON.stringify(posts));

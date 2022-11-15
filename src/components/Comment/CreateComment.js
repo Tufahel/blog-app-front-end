@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { createComment } from '../../redux/actions/Comment';
 
 const CreateComment = () => {
-  const user = localStorage.getItem('user');
   const postId = parseInt(localStorage.getItem('postid'), 10);
   const [comment, setComment] = useState({
     text: '',
@@ -48,7 +47,7 @@ const CreateComment = () => {
             />
             <br />
             <button
-              className="text-center bg-teal-500 hover:bg-teal-700 text-white font-bold p-2 rounded"
+              className="text-center bg-green-500 hover:bg-green-700 text-white font-bold p-2 rounded"
               type="submit"
             >
               Comment Now
@@ -56,17 +55,6 @@ const CreateComment = () => {
           </form>
 
         </section>
-        {
-        user && (
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold p-1 rounded mx-20"
-            type="button"
-            onClick={() => navigate('/')}
-          >
-            See Posts
-          </button>
-        )
-      }
       </div>
     </>
   );
