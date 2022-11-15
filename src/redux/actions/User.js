@@ -33,7 +33,6 @@ export const signUp = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNUP_SUCCESS,
         payload: user,
       });
-      //   toast.success('Signup successful');
       location('/login');
     })
     .catch((error) => {
@@ -41,7 +40,6 @@ export const signUp = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNUP_FAILURE,
         payload: error,
       });
-    //   toast.error('Signup failed, please try again');
     });
 };
 
@@ -55,10 +53,8 @@ export const signIn = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNIN_SUCCESS,
         payload: res.data,
       });
-      // toast.success('Signin successful');
-      console.log('action user: ', res.data);
       localStorage.setItem('token', res.data.token);
-      localStorage.setItem('user', JSON.stringify(res.data));
+      localStorage.setItem('user', JSON.stringify(res.data.user.name));
       localStorage.setItem('userid', JSON.stringify(res.data.user.id));
       location('/');
     })
@@ -67,7 +63,6 @@ export const signIn = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNIN_FAILURE,
         payload: error,
       });
-      // toast.error('Signin failed, please try again');
     });
 };
 
@@ -76,13 +71,10 @@ export const signOut = (location) => (dispatch) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('userid');
-    localStorage.removeItem('bikes');
-    localStorage.removeItem('bikeid');
-    localStorage.removeItem('recentbikeid');
+    localStorage.removeItem('postid');
     dispatch({
       type: actionTypes.SIGNOUT_SUCCESS,
     });
-    // toast.success('Signout successful');
     location('/');
   } else {
     dispatch({

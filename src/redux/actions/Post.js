@@ -1,7 +1,6 @@
 import {
   fetchPosts, createNewPost, deletePost, fetchPostDetails,
 } from '../../api/Api';
-import { signIn } from './User';
 
 export const actionTypes = {
   POST_CREATE_SUCCESS: 'POST_CREATE_SUCCESS',
@@ -23,9 +22,11 @@ export const getPosts = () => async (dispatch) => {
           user_id: post.author_id,
           title: post.title,
           text: post.text,
+          image: post.image,
           like_counts: post.like_counter,
           comment_counts: post.comment_counter,
           post_id: post.id,
+          created_at: post.created_at,
         })),
       });
       localStorage.setItem('posts', JSON.stringify(posts));
@@ -38,14 +39,14 @@ export const getPosts = () => async (dispatch) => {
     });
 };
 
-export const getPostDetails = (postId) => async (dispatch) => {
-  fetchPostDetails(postId)
+export const getPostDetails = (id) => async (dispatch) => {
+  fetchPostDetails(id)
     .then((post) => {
       dispatch({
         type: actionTypes.POST_GET_SUCCESS,
         payload: post,
       });
-      localStorage.setItem('single post', post);
+      console.log('action post: ', post);
     })
     .catch((error) => {
       dispatch({
@@ -56,16 +57,13 @@ export const getPostDetails = (postId) => async (dispatch) => {
 };
 
 export const createPost = (post, location) => (dispatch) => {
-  const user = signIn();
-  const userId = localStorage.getItem('userid', user);
-  createNewPost(post, userId)
+  createNewPost(post)
     .then((post) => {
       dispatch({
         type: actionTypes.POST_CREATE_SUCCESS,
         payload: post,
       });
-      //   toast.success('post created successfully');
-      location('/posts');
+      location('/');
     })
     .catch((error) => {
       dispatch({
@@ -75,20 +73,18 @@ export const createPost = (post, location) => (dispatch) => {
     });
 };
 
-export const destroyPost = (id) => (dispatch) => {
-  deletePost(id)
+export const destroyPost = (postId) => (dispatch) => {
+  deletePost(postId)
     .then(() => {
       dispatch({
         type: actionTypes.POST_DELETE_SUCCESS,
-        payload: id,
+        payload: postId,
       });
-    //   toast.success('post deleted successfully');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.POST_DELETE_FAILURE,
         payload: error,
       });
-    //   toast.error('Unable to delete post');
     });
 };

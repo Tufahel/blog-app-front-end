@@ -1,65 +1,66 @@
-# React and Redux
+[](https://img.shields.io/badge/Catalog-of-things-redViolet)
 
-If you are not familiar with linters and GitHub Actions, read [root level README](../README.md).
+# Blog App Front End
 
-## Set-up GitHub Actions
+> The Blog app is a classic example of a blog website. It is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
-This GitHub Action is going to run [ESLint](https://eslint.org/) and [Stylelint](https://stylelint.io/) to help you find style issues.
+## Demo Pic
+![Posts](/src/assets/posts.png)
+![MyPost](/src/assets/myposts.png)
+![Details](src/assets/postdetails.png)
 
-[Stylelint](https://stylelint.io/) is a linter for your stylesheets that helps you avoid errors and enforce conventions.
+## Back-End Repo
+[Backend Repo](https://github.com/Tufahel/blog-app-ror)
 
-[ESLint](https://eslint.org/) is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, with the goal of making code more consistent and avoiding bugs.
+## Live App
+- Live app: [Blog App](https://euphonious-semolina-b80229.netlify.app/)
 
-Please do the following **steps in this order**:
 
-1. In the first commit of your feature branch create a `.github/workflows` folder and add a copy of [`.github/workflows/linters.yml`](.github/workflows/linters.yml) to that folder.
-    - **Remember** to use the file linked above
-    - **Remember** that `.github` folder starts with a dot.
-2. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-    - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-3. When you open your first pull request you should see the result of the GitHub Actions:
+## Built With
+- React
+- Redux
+- RestAPI
+- JSX
+- TailwindCSS
 
-![gh actions checks](../assets/images/gh-actions-eslint-stylelint-checks.png)
 
-Click on the `Details` link to see the full output and the errors that need to be fixed:
+## Getting Started
 
-![gh actions failing checks](../assets/images/gh-actions-html-css-failing-checks.png)
+To get a local copy up and running follow these setup steps.
 
-## Set-up linters in your local env
+**Setup**
 
-### ESLint
+- Open terminal and clone the project: `git clone git@github.com:Tufahel/blog-app-front-end.git`
+- cd into the directory `blog-app-front-end`
 
-1. Run 
-    ```
-    npm install --save-dev eslint@7.x eslint-config-airbnb@18.x eslint-plugin-import@2.x eslint-plugin-jsx-a11y@6.x eslint-plugin-react@7.x eslint-plugin-react-hooks@4.x @babel/eslint-parser@7.x @babel/core@7.x  @babel/plugin-syntax-jsx@7.x  @babel/preset-react@7.x @babel/preset-react@7.x
-    ```
-    *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
-2. Copy [.eslintrc.json](./.eslintrc.json) and [.babelrc](./.babelrc) to the root directory of your project.
-3. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-    - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-4. Run `npx eslint .` on the root of your directory of your project.
-5. Fix linter errors.
-6. **IMPORTANT NOTE**: feel free to research [auto-correct options for Stylelint](https://stylelint.io/user-guide/cli#autofixing-errors) if you get a flood of errors but keep in mind that correcting style errors manually will help you to make a habit of writing a clean code!
+**Prerequisites**
 
-### Stylelint
+- You need to have `node.js` installed in your system
 
-1. Run
+**Install**
 
-   ```
-   npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x
-   ```
+- On your terminal run : `npm i`
+- To run the app in the development mode : `npm start`
+- Launch the test runner : `npm test`
+- In case you run into any errors please raise an [issue](https://github.com/Tufahel/blog-app-front-end/issues).
 
-   *not sure how to use npm? Read [this](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).*
+## Author
 
-2. Copy [.stylelintrc.json](./.stylelintrc.json) to the root directory of your project.
-3. **Do not make any changes in config files - they represent style guidelines that you share with your team - which is a group of all Microverse students.**
-   - If you think that change is necessary - open a [Pull Request in this repository](../README.md#contributing) and let your code reviewer know about it.
-4. Run `npx stylelint "**/*.{css,scss}"` on the root of your directory of your project.
-5. Fix linter errors.
-6. **IMPORTANT NOTE**: feel free to research [auto-correct options for Stylelint](https://stylelint.io/user-guide/cli#autofixing-errors) if you get a flood of errors but keep in mind that correcting style errors manually will help you to make a habit of writing a clean code!
+👤 **Tufahel Ahmed**
 
-## Test/Deployment Actions
+- GitHub: [@Tufahel](https://github.com/Tufahel)
+- Twitter: [@TufahelAhmed](https://twitter.com/TufahelAhmed)
+- LinkedIn: [@Tufahel-Ahmed](https://www.linkedin.com/in/tufahel-ahmed/)
 
-Feel free to add your own deployment actions which can run your tests and deploy to Heroku.
+## 🤝 Contributing
 
-Make sure that you do not modify the [`.github/workflows/linters.yml`](.github/workflows/linters.yml) but that you create a separe GitHub Action workflow file for that.
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/Tufahel/blog-app-front-end/issues)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+This project is [MIT](https://github.com/microverseinc/readme-template/blob/master/MIT.md) licensed.

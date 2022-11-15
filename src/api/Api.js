@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-const URL = 'http://localhost:3000';
+const URL = 'https://limitless-gorge-05434.herokuapp.com';
 const userId = localStorage.getItem('userid');
-const postId = localStorage.getItem('postid');
 
 export const fetchUserData = async () => {
   const res = await fetch(`${URL}/api/users`)
@@ -19,19 +18,16 @@ export const postSignupData = async (user) => {
       confirm_password: user.confirm_password,
     },
   });
-  console.log(res.data);
   return res.data;
 };
 
 export const postSigninData = async (user) => {
-  console.log('api: ', user);
   const res = await axios.post(`${URL}/users/sign_in`, {
     user: {
       email: user.email,
       password: user.password,
     },
   });
-  console.log(res);
   return res;
 };
 
@@ -43,14 +39,13 @@ const authToken = () => {
   return {};
 };
 
-export const createNewPost = async (data, id) => {
+export const createNewPost = async (data) => {
   const newPost = {
-    user_id: id,
+    user_id: userId,
     title: data.title,
     text: data.text,
+    image: data.image,
   };
-
-  console.log('newpost: ', newPost);
 
   const response = await axios.post(`${URL}/api/users/${userId}/posts`, newPost, {
     headers: {
@@ -67,15 +62,14 @@ export const fetchPosts = async () => {
   return res;
 };
 
-export const fetchPostDetails = async () => {
-  console.log('api: ', postId);
+export const fetchPostDetails = async (postId) => {
   const res = await fetch(`${URL}/api/users/${userId}/posts/${postId}`)
     .then((response) => response.json());
   return res;
 };
 
-export const deletePost = async (id) => {
-  const res = await axios.delete(`${URL}/api/users/${userId}/posts/${id}`, {
+export const deletePost = async (postId) => {
+  const res = await axios.delete(`${URL}/api/users/${userId}/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authToken()}`,
@@ -84,12 +78,10 @@ export const deletePost = async (id) => {
   return res.data;
 };
 
-export const createNewComment = async (data) => {
+export const createNewComment = async (data, postId) => {
   const newComment = {
     text: data.text,
   };
-
-  console.log('newComment: ', newComment);
 
   const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}/comments`, newComment, {
     headers: {
@@ -106,7 +98,7 @@ export const fetchComments = async (postId) => {
   return res;
 };
 
-export const deleteComment = async (id) => {
+export const deleteComment = async (postId, id) => {
   const res = await axios.delete(`${URL}/api/users/${userId}/posts/${postId}/comments/${id}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -116,7 +108,7 @@ export const deleteComment = async (id) => {
   return res.data;
 };
 
-export const createNewLike = async () => {
+export const createNewLike = async (postId) => {
   const response = await axios.post(`${URL}/api/users/${userId}/posts/${postId}/likes`, {
     headers: {
       Authorization: `Bearer ${authToken()}`,
