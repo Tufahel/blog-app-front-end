@@ -5,8 +5,9 @@
 > The Blog app is a classic example of a blog website. It is a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
 ## Demo Pic
-![Posts](pic1.png)
-![Post](pic2.png)
+![Posts](/src/assets/posts.png)
+![MyPost](/src/assets/myposts.png)
+![Details](src/assets/postdetails.png)
 
 ## Back-End Repo
 [Backend Repo](https://github.com/Tufahel/blog-app-ror)
