@@ -37,6 +37,11 @@ const Posts = () => {
                 <NavLink to="/post"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>See more</button></NavLink>
               </div>
               <LikeCommentCount id={post.post_id} />
+              <div>
+                Author:
+                {' '}
+                <div className="inline text-red-500"><User id={post.user_id} /></div>
+              </div>
             </div>
           </div>
         ))}
@@ -55,7 +60,7 @@ const Posts = () => {
                   <NavLink to="/post"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
                 </div>
                 <LikeCommentCount id={post.post_id} />
-                <div className="flex justify-between">
+                <div>
                   Author:
                   {' '}
                   <div className="inline text-red-500"><User id={post.user_id} /></div>

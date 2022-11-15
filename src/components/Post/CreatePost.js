@@ -21,7 +21,7 @@ const CreatePost = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost(post, navigate('/myposts'), e));
+    dispatch(createPost(post, navigate, e));
   };
   return (
     <>
