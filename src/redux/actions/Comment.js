@@ -24,7 +24,6 @@ export const getComments = () => async (dispatch) => {
           comment_id: comment.id,
         })),
       });
-      localStorage.setItem('comments', JSON.stringify(comments));
     })
     .catch((error) => {
       dispatch({
@@ -60,8 +59,7 @@ export const destroyComment = (postId, id, location) => (dispatch) => {
         type: actionTypes.COMMENT_DELETE_SUCCESS,
         payload: id,
       });
-      window.location.reload();
-      location('/post');
+      location('/myposts');
       toast.success('Comment Deleted Successfully.');
     })
     .catch((error) => {

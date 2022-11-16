@@ -17,9 +17,9 @@ const LatestPost = () => {
     <div>
       <h2 className="ml-6 text-3xl font-bold">Latest Post</h2>
       {latestPost?.map((post) => (
-        <div className="flex flex-col md:flex-row ml-6 mt-2 pb-4 space-x-12 border-b-2 md:shrink-0" key={maxId}>
+        <div className="flex flex-col md:flex-row ml-6 mt-2 pb-4 space-x-12 border-b-2" key={maxId}>
           <img className="rounded object-cover h-56" src={post.image} alt="img" />
-          <div className="flex flex-col justify-center border-b-3">
+          <div className="flex flex-col justify-center items-center border-b-3">
             <h4 className="font-medium text-lg text-4xl">
               {post.title}
             </h4>

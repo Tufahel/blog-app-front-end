@@ -75,13 +75,14 @@ export const createPost = (post, location) => (dispatch) => {
     });
 };
 
-export const destroyPost = (postId) => (dispatch) => {
+export const destroyPost = (postId, location) => (dispatch) => {
   deletePost(postId)
     .then(() => {
       dispatch({
         type: actionTypes.POST_DELETE_SUCCESS,
         payload: postId,
       });
+      location('/myposts');
       toast.success('Post Deleted Successfully.');
     })
     .catch((error) => {
