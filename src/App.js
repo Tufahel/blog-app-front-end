@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Comments from './components/Comment/Comments';
 import CreateComment from './components/Comment/CreateComment';
@@ -30,6 +32,19 @@ function App() {
           <Route path="/comments" element={<Comments />} />
         </Routes>
       </BrowserRouter>
+      <aside>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </aside>
     </div>
   );
 }

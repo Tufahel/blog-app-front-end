@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   fetchPosts, createNewPost, deletePost, fetchPostDetails,
 } from '../../api/Api';
@@ -46,7 +47,6 @@ export const getPostDetails = (id) => async (dispatch) => {
         type: actionTypes.POST_GET_SUCCESS,
         payload: post,
       });
-      console.log('action post: ', post);
     })
     .catch((error) => {
       dispatch({
@@ -63,6 +63,7 @@ export const createPost = (post, location) => (dispatch) => {
         type: actionTypes.POST_CREATE_SUCCESS,
         payload: post,
       });
+      toast.success('Posted Successfully.');
       location('/');
     })
     .catch((error) => {
@@ -70,6 +71,7 @@ export const createPost = (post, location) => (dispatch) => {
         type: actionTypes.POST_CREATE_FAILURE,
         payload: error,
       });
+      toast.success('Post Failed! Try Again.');
     });
 };
 
@@ -80,11 +82,13 @@ export const destroyPost = (postId) => (dispatch) => {
         type: actionTypes.POST_DELETE_SUCCESS,
         payload: postId,
       });
+      toast.success('Post Deleted Successfully.');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.POST_DELETE_FAILURE,
         payload: error,
       });
+      toast.success('Post Deletaion Failed.');
     });
 };
