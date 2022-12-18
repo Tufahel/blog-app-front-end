@@ -41,7 +41,7 @@ const authToken = () => {
 
 export const createNewPost = async (data) => {
   const newPost = {
-    user_id: userId,
+    user_id: data.author_id,
     title: data.title,
     text: data.text,
     image: data.image,
