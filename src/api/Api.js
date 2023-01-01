@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://limitless-gorge-05434.herokuapp.com';
+const URL = 'https://blog-app-ror.onrender.com';
 const userId = localStorage.getItem('userid');
 
 export const fetchUserData = async () => {
@@ -41,7 +41,7 @@ const authToken = () => {
 
 export const createNewPost = async (data) => {
   const newPost = {
-    user_id: userId,
+    user_id: data.author_id,
     title: data.title,
     text: data.text,
     image: data.image,

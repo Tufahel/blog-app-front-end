@@ -13,8 +13,6 @@ const DeleteComment = (props) => {
   const navigate = useNavigate();
   const handleDelete = (id) => {
     dispatch(destroyComment(postId, id, navigate));
-    console.log('working');
-    // window.location.reload();
   };
   return (
 

@@ -11,7 +11,7 @@ const Navigation = () => {
     dispatch(signOut(navigate('/')));
   }
   return (
-    <nav className="flex items-center justify-between flex-wrap p-4">
+    <nav className="flex items-center justify-between flex-wrap p-4 border lg:sticky top-0 bg-white">
       <div className="flex items-center flex-shrink-0 text-black mr-6">
         <span className="font-semibold text-xl tracking-tight">Tufahel&apos;s Blog</span>
       </div>
@@ -25,7 +25,7 @@ const Navigation = () => {
         </>
       )
     }
-          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-green-500 mr-4" to="/contacts">Contacts</NavLink>
+          <NavLink className="block mt-4 lg:inline-block lg:mt-0 text-black-200 hover:text-green-500 mr-4" to="/about">About</NavLink>
           {
       user && (
         <>

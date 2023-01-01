@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Contact = () => (
-  <div className="text-center m-4">
+  <div className="text-center m-12">
+    <p className="p-6">
+      The Blog app is a classic example of a blog website. It is a fully functional website that
+      will show the list of posts and empower readers to interact with them by adding
+      comments and liking posts.
+    </p>
     <h4 className="rounded text-sm text-red-500 border inline p-3 m-1 font-medium hover:text-white hover:border-red-700 hover:bg-red-700"><a href="https://tufahel.github.io/portfolio-desktop-version/">Portfolio</a></h4>
     <h3 className="rounded text-sm font-medium border inline p-3 m-1 hover:border-black hover:bg-black hover:text-white"><a href="https://github.com/Tufahel">GitHub</a></h3>
     <h3 className="rounded text-sm font-medium border inline p-3 m-1 text-blue-600 hover:text-white hover:bg-blue-600 hover:border-blue-600"><a href="https://www.linkedin.com/">Linkdein</a></h3>

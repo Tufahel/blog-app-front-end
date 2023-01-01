@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   fetchComments, createNewComment, deleteComment,
 } from '../../api/Api';
@@ -23,7 +24,6 @@ export const getComments = () => async (dispatch) => {
           comment_id: comment.id,
         })),
       });
-      localStorage.setItem('comments', JSON.stringify(comments));
     })
     .catch((error) => {
       dispatch({
@@ -40,13 +40,15 @@ export const createComment = (comment, postId, location) => (dispatch) => {
         type: actionTypes.COMMENT_CREATE_SUCCESS,
         payload: post,
       });
-      location('/post');
+      toast.success('Commented Successfully.');
+      location('/postdetails');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.COMMENT_CREATE_FAILURE,
         payload: error,
       });
+      toast.success('Comment Failed! Try again.');
     });
 };
 
@@ -57,13 +59,14 @@ export const destroyComment = (postId, id, location) => (dispatch) => {
         type: actionTypes.COMMENT_DELETE_SUCCESS,
         payload: id,
       });
-      window.location.reload();
-      location('/post');
+      location('/myposts');
+      toast.success('Comment Deleted Successfully.');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.COMMENT_DELETE_FAILURE,
         payload: error,
       });
+      toast.success('Comment Deletation Failed.');
     });
 };

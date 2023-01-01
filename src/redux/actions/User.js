@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { fetchUserData, postSignupData, postSigninData } from '../../api/Api';
 
 export const actionTypes = {
@@ -33,6 +34,7 @@ export const signUp = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNUP_SUCCESS,
         payload: user,
       });
+      toast.success('Signup Successful.');
       location('/login');
     })
     .catch((error) => {
@@ -40,6 +42,7 @@ export const signUp = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNUP_FAILURE,
         payload: error,
       });
+      toast.success('Signup Failed.');
     });
 };
 
@@ -53,6 +56,7 @@ export const signIn = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNIN_SUCCESS,
         payload: res.data,
       });
+      toast.success('Login Successful.');
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user.name));
       localStorage.setItem('userid', JSON.stringify(res.data.user.id));
@@ -63,6 +67,7 @@ export const signIn = (userData, location) => async (dispatch) => {
         type: actionTypes.SIGNIN_FAILURE,
         payload: error,
       });
+      toast.success('Login Failed.');
     });
 };
 
@@ -75,11 +80,12 @@ export const signOut = (location) => (dispatch) => {
     dispatch({
       type: actionTypes.SIGNOUT_SUCCESS,
     });
+    toast.success('Signout Successful.');
     location('/');
   } else {
     dispatch({
       type: actionTypes.SIGNOUT_FAILURE,
     });
-    // toast.error('Signout failed, please try again');
+    toast.error('Signout failed, please try again');
   }
 };

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import {
   fetchLikes, createNewLike,
 } from '../../api/Api';
@@ -37,11 +38,13 @@ export const createLike = (postId) => (dispatch) => {
         type: actionTypes.LIKE_CREATE_SUCCESS,
         payload: like,
       });
+      toast.success('Post Liked.');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.LIKE_CREATE_FAILURE,
         payload: error,
       });
+      toast.success('Post Like Failed! Try Again.');
     });
 };
