@@ -33,7 +33,7 @@ const Posts = () => {
                 {' '}
                 <div className="flex">
                   <p className="w-60 truncate">{post.text}</p>
-                  <NavLink to="/post"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
+                  <NavLink to="/postdetails"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
                 </div>
                 <LikeCommentCount id={post.post_id} />
                 <div>

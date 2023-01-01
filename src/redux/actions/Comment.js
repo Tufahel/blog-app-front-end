@@ -41,7 +41,7 @@ export const createComment = (comment, postId, location) => (dispatch) => {
         payload: post,
       });
       toast.success('Commented Successfully.');
-      location('/post');
+      location('/postdetails');
     })
     .catch((error) => {
       dispatch({
