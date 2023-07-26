@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = 'https://blog-app-kkpm.onrender.com';
+const URL = 'https://blog-app-ror.onrender.com';
 const userId = localStorage.getItem('userid');
 
 export const fetchUserData = async () => {
