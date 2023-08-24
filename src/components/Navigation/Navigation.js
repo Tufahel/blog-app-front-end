@@ -58,6 +58,7 @@ const Navigation = () => {
         </>
       )
     }
+        <p className="block mt-4 lg:inline-block lg:mt-0 text-red-500 mr-4">Just a bit! Backend server is a bit slow for running on render free service.</p>
         {
       user == null && (
         <>
