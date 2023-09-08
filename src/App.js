@@ -45,6 +45,9 @@ function App() {
           pauseOnHover
         />
       </aside>
+      <footer className="py-2 text-sm text-gray-700 text-center">
+        <p>&#169; 2022 All Rights Reserved</p>
+      </footer>
     </div>
   );
 }

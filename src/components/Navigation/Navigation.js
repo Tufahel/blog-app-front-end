@@ -11,7 +11,7 @@ const Navigation = () => {
     dispatch(signOut(navigate('/')));
   }
   return (
-    <nav className="flex items-center justify-between flex-wrap p-4 border lg:sticky top-0 bg-white">
+    <nav className="flex items-center justify-between text-center lg:text-left flex-wrap p-4 border lg:sticky top-0 bg-white">
       <div className="flex items-center flex-shrink-0 text-black mr-6">
         <span className="font-semibold text-xl tracking-tight">Tufahel&apos;s Blog</span>
       </div>
@@ -38,6 +38,7 @@ const Navigation = () => {
       )
     }
         </div>
+        <p className="block mt-4 lg:inline-block lg:mt-0 ml-2 text-red-700 mr-4 text-center">Please, be patient! Backend server is slow for running on render free service.</p>
         {
       user && (
         <>
@@ -58,7 +59,6 @@ const Navigation = () => {
         </>
       )
     }
-        <p className="block mt-4 lg:inline-block lg:mt-0 text-red-500 mr-4">Just a bit! Backend server is a bit slow for running on render free service.</p>
         {
       user == null && (
         <>
