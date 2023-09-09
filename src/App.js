@@ -16,7 +16,7 @@ import User from './components/User';
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col h-screen justify-between">
       <BrowserRouter>
         <Navigation />
         <Routes>
@@ -45,8 +45,8 @@ function App() {
           pauseOnHover
         />
       </aside>
-      <footer className="py-2 text-sm text-gray-700 text-center">
-        <p>&#169; 2022 All Rights Reserved</p>
+      <footer className="bg-neutral-100 text-sm text-gray-700 text-center pt-4 pb-4 border-t-4">
+        <p>&#169; 2023 All Rights Reserved</p>
       </footer>
     </div>
   );
