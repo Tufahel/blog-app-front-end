@@ -1,63 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getPosts } from '../../redux/actions/Post';
 import LikeCommentCount from '../LikeCommentCount/LikeCommentCount';
 import User from '../User';
+import LatestPost from './LatestPost';
 
 const Posts = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const posts = useSelector((state) => state.PostReducer);
-  const ids = posts.posts.map((post) => post.post_id);
-  const maxId = Math.max(...ids);
-  console.log('max Id: ', maxId);
-  const latestPost = posts.posts.filter((post) => post.post_id === maxId);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const setPostId = (id) => {
     localStorage.setItem('postid', id);
-    // navigate(`/post/${postId}`);
   };
   return (
     <>
       <div className="flex flex-col m-2">
-        <h2 className="ml-6 text-3xl font-bold">Latest Post</h2>
-        {latestPost?.map((post) => (
-          <div className="flex flex-col md:flex-row ml-6 mt-2 pb-4 space-x-12 border-b-2 md:shrink-0" key={maxId}>
-            <img className="rounded object-cover h-56" src={post.image} alt="img" />
-            <div className="flex flex-col justify-center border-b-3">
-              <h4 className="font-medium text-lg text-4xl">
-                {post.title}
-              </h4>
-              <div className="flex">
-                <p className="w-60 truncate">{post.text}</p>
-                <NavLink to="/post"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
-              </div>
-              <LikeCommentCount id={post.post_id} />
-              <div>
-                Author:
-                {' '}
-                <div className="inline text-red-500"><User id={post.user_id} /></div>
+        <LatestPost />
+        <h2 className="ml-4 text-3xl font-bold mb-1 mt-4 text-center lg:text-left">Trending Posts</h2>
+        <div className="flex flex-wrap m-4">
+          {isLoading ? (
+            <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
+              <div className="animate-pulse flex space-x-4">
+                <div className="rounded-full bg-slate-700 h-10 w-10" />
+                <div className="flex-1 space-y-6 py-1">
+                  <div className="h-2 bg-slate-700 rounded" />
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-3 gap-4">
+                      <div className="h-2 bg-slate-700 rounded col-span-2" />
+                      <div className="h-2 bg-slate-700 rounded col-span-1" />
+                    </div>
+                    <div className="h-2 bg-slate-700 rounded" />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-        <div className="flex flex-wrap m-4">
-          {posts.posts?.map((post) => (
-            <div className="flex flex-col items-left p-2 space-y-4 border m-2" key={post.post_id}>
-              <img className="rounded border object-cover h-24 w-36" src={post.image} alt="img" />
+          ) : posts.posts?.map((post) => (
+            <div className="flex flex-col items-left p-2 space-y-4 mx-2 my-2 border transition-shadow duration-300 ease-in-out hover:shadow-xl hover:shadow-black/60" key={post.post_id}>
+              <img className="rounded border object-fill lg:h-36 lg:w-60 md:h-36 md:w-60" src={post.image} alt="img" />
               <div className="flex flex-col space-y-1">
                 {' '}
-                <h4 className="font-medium text-lg">
+                <h4 className="font-medium text-2xl">
                   {post.title}
                 </h4>
                 {' '}
                 <div className="flex">
                   <p className="w-60 truncate">{post.text}</p>
-                  <NavLink to="/post"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
+                  <NavLink to="/postdetails"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
                 </div>
                 <LikeCommentCount id={post.post_id} />
                 <div>
