@@ -11,9 +11,9 @@ const Navigation = () => {
     dispatch(signOut(navigate('/')));
   }
   return (
-    <nav className="flex items-center justify-between text-center lg:text-left flex-wrap p-4 border lg:sticky top-0 bg-white">
+    <nav className="flex items-center justify-center lg:justify-between text-center lg:text-left flex-wrap p-4 border lg:sticky top-0 bg-white z-50">
       <div className="flex items-center flex-shrink-0 text-black mr-6">
-        <span className="font-semibold text-xl tracking-tight">Tufahel&apos;s Blog</span>
+        <h1 className="font-semibold text-xl tracking-tight text-center">Tufahel&apos;s Blog</h1>
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-sm lg:flex-grow">

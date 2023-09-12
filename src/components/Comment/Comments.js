@@ -26,7 +26,7 @@ const Comments = (props) => {
         <div className="flex justify-center border"><LikeCommentCount id={postId} /></div>
         {filtered?.map((comment) => (
           <div className="m-2" key={comment.post_id}>
-            <p>
+            <p className="text-center my-4">
               <div className="inline text-black font-medium"><User id={comment.user_id} /></div>
               {' : '}
               {comment.text}

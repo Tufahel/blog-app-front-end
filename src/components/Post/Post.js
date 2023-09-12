@@ -28,15 +28,15 @@ const Post = () => {
   return (
     <>
       <div key={post.id} className="flex flex-col justify-center items-center m-2">
-        <img className="rounded w-60" src={post.image} alt="img" />
-        <div>
+        <img className="h-96 max-w-full rounded-lg" src={post.image} alt="img" />
+        <div className="mt-2">
           Posted by:
           {' '}
           <div className="inline text-red-500 font-medium"><User id={post.author_id} /></div>
         </div>
-        <h4 className="font-bold text-lg">{post.title}</h4>
-        <p>{post.text}</p>
-        <div className="flex space-x-2 m-2">
+        <h4 className="my-2 font-bold text-4xl">{post.title}</h4>
+        <p className="my-2 lg:w-1/2 text-center">{post.text}</p>
+        <div className="flex space-x-2 mb-2">
           {
           user && (
             <form

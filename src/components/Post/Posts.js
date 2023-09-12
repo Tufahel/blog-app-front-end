@@ -13,7 +13,12 @@ const Posts = () => {
 
   useEffect(() => {
     dispatch(getPosts());
-    setIsLoading(false);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const setPostId = (id) => {
@@ -23,6 +28,7 @@ const Posts = () => {
     <>
       <div className="flex flex-col m-2">
         <LatestPost />
+        <h2 className="ml-4 text-3xl font-bold mb-1 mt-4 text-center lg:text-left">Trending Posts</h2>
         <div className="flex flex-wrap m-4">
           {isLoading ? (
             <div className="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
@@ -41,11 +47,11 @@ const Posts = () => {
               </div>
             </div>
           ) : posts.posts?.map((post) => (
-            <div className="flex flex-col items-left p-2 space-y-4 border m-2" key={post.post_id}>
-              <img className="rounded border object-cover lg:h-24 lg:w-36 md:h-24 md:w-36" src={post.image} alt="img" />
+            <div className="flex flex-col items-left p-2 space-y-4 mx-2 my-2 border transition-shadow duration-300 ease-in-out hover:shadow-xl hover:shadow-black/60" key={post.post_id}>
+              <img className="rounded border object-fill lg:h-36 lg:w-60 md:h-36 md:w-60" src={post.image} alt="img" />
               <div className="flex flex-col space-y-1">
                 {' '}
-                <h4 className="font-medium text-lg">
+                <h4 className="font-medium text-2xl">
                   {post.title}
                 </h4>
                 {' '}

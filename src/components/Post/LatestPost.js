@@ -15,23 +15,30 @@ const LatestPost = () => {
   };
   return (
     <div>
-      <h2 className="ml-6 text-3xl font-bold">Latest Post</h2>
+      <h2 className="ml-4 text-3xl font-bold mb-2 text-center lg:text-left">Latest Post</h2>
       {latestPost?.map((post) => (
-        <div className="flex flex-col ml-6 mt-2 pb-4 space-x-12 border-b-2 mr-2" key={maxId}>
-          <img className="rounded object-cover h-56 mb-2" src={post.image} alt="img" />
-          <div className="flex flex-col justify-center items-center border-b-3 mb-2">
-            <h4 className="font-medium text-lg text-4xl text-center mb-2">
+        <div
+          className="relative overflow-hidden rounded-lg bg-cover bg-no-repeat p-12 mx-6"
+          key={maxId}
+          style={{
+            backgroundImage: `url(${post.image})`,
+            height: '400px',
+          }}
+        >
+          <div className="bg-white absolute inset-0 overflow-hidden bg-fixed opacity-50" />
+          <div className="absolute inset-0 flex flex-col h-full items-center justify-center">
+            <h4 className="mb-2 text-5xl font-bold">
               {post.title}
             </h4>
-            <div className="flex mb-2">
-              <p className="lg:w-96 w-80 truncate">{post.text}</p>
+            <div className="flex mb-2 text-xl">
+              <p className="lg:w-96 w-56 truncate ">{post.text}</p>
               <NavLink to="/postdetails"><button className="text-green-500" type="button" onClick={() => setPostId(post.post_id)}>more</button></NavLink>
             </div>
             <LikeCommentCount id={post.post_id} />
             <div className="mt-2">
               Author:
               {' '}
-              <div className="inline text-red-500"><User id={post.user_id} /></div>
+              <div className="inline text-red-600"><User id={post.user_id} /></div>
             </div>
           </div>
         </div>
